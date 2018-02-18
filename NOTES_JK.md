@@ -116,5 +116,43 @@ I copy-pasted the URL I got into a browser to do the work.
 
 The notebook is [here](https://github.com/jkeefe/torch-rnn/blob/dognames/compare_sample_to_original.ipynb).
 
+# Russian bot tweets
 
+## Prepping the data
+
+Working from the "streamlined spreadsheet" data set here: https://www.nbcnews.com/tech/social-media/now-available-more-200-000-deleted-russian-troll-tweets-n844731
+
+Don't install conda again! :-)
+
+```
+/Users/jkeefe/anaconda/bin/conda create --name rnn
+source activate rnn
+```
+
+Then cutting down the csv:
+
+Get the names of the columns: `csvcut -n tweets.csv`
+
+Take just the `text` column name into a new csv: `csvcut -c text tweets.csv > justtext.csv`
+
+Rename it, since it's just text now: `mv justtext.csv justtext.txt`
+
+Using `sed` to clean up the text file, with guide to `sed` here: http://www.grymoire.com/Unix/Sed.html
+
+- `-E` for regular expression searching
+- `-e` for multiple expressions (one for the start of the line one for the end)
+- `'s/^"//'` for quotes at the start of the line
+- `'s/"$//'` quotes at the end
+- `'s/""/"/g'` doublequotes to single ones (from the csv)
+- `'s/…//g'` the ... character
+
+```
+sed -E -e 's/^"//' -e 's/"$//' -e 's/""/"/g' -e 's/…//g' <justtext.txt >cleaned_text.txt
+```
+
+Also eliminating links, just used this in atom: `[ ]?http[s]?\S+` (with an optional leading space).
+
+Then eliminated blank lines in atom :`^\n`
+
+Decided to also eliminate "RT @username: " ... so we really just get the TEXT that was propogated, no matter what the source. `^RT @\w+: `
 
