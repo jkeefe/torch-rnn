@@ -1,4 +1,9 @@
 # torch-rnn
+
+_**NOTE:** I'm playing with this repo for some RNN experiments. For notes on my process specific to this fork, see the `dognames` branch! --John Keefe_
+
+-----
+
 torch-rnn provides high-performance, reusable RNN and LSTM modules for torch7, and uses these modules for character-level
 language modeling similar to [char-rnn](https://github.com/karpathy/char-rnn).
 
