@@ -156,3 +156,61 @@ Then eliminated blank lines in atom :`^\n`
 
 Decided to also eliminate "RT @username: " ... so we really just get the TEXT that was propogated, no matter what the source. `^RT @\w+: `
 
+## Deep Learning
+
+Fired up the EC2 server!
+
+So as not to mess up my dogs work ... and because I didn't manage to change branches ... once on the EC2 server I'm making a branch off `dognames` and call it `russianbots`.
+
+```
+python scripts/preprocess.py \
+  --input_txt data/russian_bots/cleaned_text.txt \
+  --output_h5 data/russian_bots/russianbots.h5 \
+  --output_json data/russian_bots/russianbots.json
+```
+
+Got:
+
+```
+Total vocabulary size: 2301
+Total tokens in file: 16210564
+  Training size: 12968452
+  Val size: 1621056
+  Test size: 1621056
+Using dtype  <type 'numpy.uint32'>
+```
+Following along in the example instructions:
+
+`th train.lua -input_h5 data/russian_bots/russianbots.h5 -input_json data/russian_bots/russianbots.json`
+
+This took about 5 hours!
+
+Then take a sample: 
+
+`th sample.lua -checkpoint cv/checkpoint_259000.t7 -length 3000 > data/russian_bots_sample.txt`
+
+Definitely needs some tweaking of the variables. And I’m going to give that a try. But here are some of the most coherent/least offensive ones:
+```
+Everyone cannony!!! You doing the trump &amp; full of @HillaryClinton @opolitan strong your prazies".
+Googli prayer
+National Rossions. Again. Highing Hillary Clinton campaign released excup of Dems been how peuns.
+No, 2 do Elin Austing Netwald We're Your Sanders #TheFaito
+Your toughing the Syria and Is which they will decense!
+Charges  #ThingsNotT
+The Kindy Birthday This is a war exposing everything isn endorsement party from the profac gangle weed to give over it see at the less that) he
+Mario Man Country:
+This is Joy that a run—friend and a own girst from prostance‼️
+TRUMP LIVE becomated by Americans people go what you
+It's odession they're no hatch: Left if they just in the eitborthy. They can twUSA
+Hillary's possible the media!
+Policy? 
+Who think the governinkor assends break of break deportating with RT AND fair.
+Intel does going to connected it?
+Madfort this #YepplayGahPlase
+Take sturging threats show they has tributa
+Leftists - You Founder by Trump hearbles #Dembanda_Qmighdaged  h
+My sing of allegations there want all.
+```
+
+## Marvel
+
