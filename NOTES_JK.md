@@ -214,3 +214,27 @@ My sing of allegations there want all.
 
 ## Marvel
 
+```
+python scripts/preprocess.py \
+  --input_txt data/marvel/marvel.txt \
+  --output_h5 data/marvel/marvel.h5 \
+  --output_json data/marvel/marvel.json
+```
+
+Gets
+
+```
+Total vocabulary size: 62
+Total tokens in file: 2790
+  Training size: 2232
+  Val size: 279
+  Test size: 279
+Using dtype  <type 'numpy.uint8'>
+```
+
+Following along in the example instructions:
+
+`th train.lua -input_h5 data/marvel/marvel.h5 -input_json data/marvel/marvel.json`
+
+
+  
