@@ -237,4 +237,22 @@ Following along in the example instructions:
 `th train.lua -input_h5 data/marvel/marvel.h5 -input_json data/marvel/marvel.json`
 
 
+=== 
+
+War and Peace
+
+`th train.lua -input_h5 data/war_and_peace/wap_onesentence.h5 -input_json data/war_and_peace/wap_onesentence.json -rnn_size 256 -num_layers 2 -dropout 0.5`
+
+
+====
+
+Did a bunch of War and Peace stuff without the conda environment. Whoops!
+
+Now trying something a little different -- using a word-based rnn instead of a character-based rnn.
+
+Doing that from here: https://github.com/larspars/word-rnn
+
+See that repo.
+
+
   
